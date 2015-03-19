@@ -24,13 +24,13 @@ javac 1.7.0_76
 ## Debian/Ubuntu
 
 ```
-$ sudo apt-get install docker.io curl build-essential
+$ sudo apt-get install docker.io build-essential
 ```
 
 ## RedHat/Fedora/CentOS
 
 ```
-$ sudo yum install docker-io curl
+$ sudo yum install docker-io
 ```
 
 ## non-Linux
@@ -47,7 +47,7 @@ $ sudo yum install docker-io curl
 
 ```
 $ brew cask install virtualbox vagrant
-$ brew install boot2docker curl
+$ brew install boot2docker
 ```
 
 ### Windows
@@ -55,5 +55,5 @@ $ brew install boot2docker curl
 * [Chocolatey](https://chocolatey.org/)
 
 ```
-> chocolatey install docker curl make
+> chocolatey install docker
 ```
