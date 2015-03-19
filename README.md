@@ -19,7 +19,6 @@ javac 1.7.0_76
 
 ## Optional
 
-* [curl](http://curl.haxx.se/)
 * [make](http://www.gnu.org/software/make/)
 
 ## Debian/Ubuntu
