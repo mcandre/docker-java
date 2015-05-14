@@ -1,0 +1,39 @@
+diff --git a/bin/.java_wrapper b/bin/.java_wrapper
+index 6b01b02..0f203ab 100755
+--- a/bin/.java_wrapper
++++ b/bin/.java_wrapper
+@@ -17,7 +17,7 @@
+ PRG=$0
+ progname=`basename $0`
+ case "`uname -m`" in
+-    i[3-6]86  | ia32 | ia64)
++    i[3-6]86  | ia32 | ia64 | x86_64)
+         proc=i386
+         ;;
+     sparc*)
+diff --git a/jre/bin/.java_wrapper b/jre/bin/.java_wrapper
+index 6b01b02..0f203ab 100755
+--- a/jre/bin/.java_wrapper
++++ b/jre/bin/.java_wrapper
+@@ -17,7 +17,7 @@
+ PRG=$0
+ progname=`basename $0`
+ case "`uname -m`" in
+-    i[3-6]86  | ia32 | ia64)
++    i[3-6]86  | ia32 | ia64 | x86_64)
+         proc=i386
+         ;;
+     sparc*)
+diff --git a/jre/bin/realpath b/jre/bin/realpath
+index 0b33037..096e88e 100755
+--- a/jre/bin/realpath
++++ b/jre/bin/realpath
+@@ -14,7 +14,7 @@
+ #
+ 
+ case "`uname -m`" in
+-    i[3-6]86)
++    i[3-6]86  | ia32 | ia64 | x86_64)
+         proc=i386
+         ;;
+     sparc*)
