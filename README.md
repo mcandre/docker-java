@@ -14,6 +14,7 @@ where possible options include:
   -g                        Generate all debugging info
   -g:none                   Generate no debugging info
   -g:{lines,vars,source}    Generate only some debugging info
+  -O                        Optimize; may hinder debugging or enlarge class file
   -nowarn                   Generate no warnings
   -verbose                  Output messages about what the compiler is doing
   -deprecation              Output source locations where deprecated APIs are used
@@ -23,9 +24,7 @@ where possible options include:
   -extdirs <dirs>           Override location of installed extensions
   -d <directory>            Specify where to place generated class files
   -encoding <encoding>      Specify character encoding used by source files
-  -source <release>         Provide source compatibility with specified release
   -target <release>         Generate class files for specific VM version
-  -help                     Print a synopsis of standard options
 ```
 
 # REQUIREMENTS
