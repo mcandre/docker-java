@@ -1,4 +1,4 @@
-IMAGE=mcandre/docker-java:8
+IMAGE=mcandre/docker-java
 
 all: run
 
