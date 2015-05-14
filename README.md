@@ -8,9 +8,8 @@ https://registry.hub.docker.com/u/mcandre/docker-java/
 
 ```
 $ make
-docker build -t mcandre/docker-java .
-docker run --rm mcandre/docker-java javac -version
-javac 1.7.0_76
+docker run --rm mcandre/docker-java:8 javac -version
+javac 1.8.0_45
 ```
 
 # REQUIREMENTS
