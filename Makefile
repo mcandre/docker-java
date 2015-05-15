@@ -1,4 +1,4 @@
-IMAGE=mcandre/docker-java:3
+IMAGE=mcandre/docker-java:2
 
 all: run
 
@@ -6,7 +6,7 @@ build: Dockerfile
 	docker build -t $(IMAGE) .
 
 run: clean-containers build
-	docker run --rm $(IMAGE) javac -version
+	docker run --rm $(IMAGE) sh -c 'strace javac -version 2>&1'
 
 clean-containers:
 	-docker ps -a | grep -v IMAGE | awk '{ print $$1 }' | xargs docker rm -f

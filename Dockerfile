@@ -1,23 +1,21 @@
-FROM centos:6
+FROM ubuntu:14.04
 MAINTAINER Andrew Pennebaker <andrew.pennebaker@gmail.com>
 
-RUN yum install -y wget glibc.i686 patch
+RUN dpkg --add-architecture i386
+RUN apt-get update
+RUN apt-get install -y g++-multilib wget bzip2
 
-RUN rpm -U ftp://rpmfind.net/linux/opensuse/factory/repo/oss/suse/x86_64/compat-32bit-2010.1.31-20.2.x86_64.rpm && \
-		yum install -y compat-32bit-2010.1.31
+RUN wget ftp://ftp.nluug.nl/pub/languages/java/jdk/JDK-1.2.2/i386/FCS/j2sdk-1.2.2-FCS-linux-i386-glibc-2.1.3.tar.bz2 && \
+		bunzip2 j2sdk-1.2.2-FCS-linux-i386-glibc-2.1.3.tar.bz2 && \
+		tar xvf j2sdk-1.2.2-FCS-linux-i386-glibc-2.1.3.tar && \
+		rm j2sdk-1.2.2-FCS-linux-i386-glibc-2.1.3.tar
 
-ENV _POSIX2_VERSION=199209
-RUN wget --no-check-certificate https://github.com/mcandre/oracle-jdk/raw/master/j2sdk-1_3_1_20-linux-i586.rpm.bin && \
-		chmod +x j2sdk-1_3_1_20-linux-i586.rpm.bin
+ENV JAVA_HOME /jdk1.2.2
+ENV LD_LIBRARY_PATH $JAVA_HOME/jre/lib/i386/green_threads:$JAVA_HOME/jre/lib/i386/classic:/lib32
+ENV APPHOME=$JAVA_HOME/bin/i386/green_threads
+ENV JREHOME=$APPHOME/jre
+ENV LC_ALL C
+ENV LANG C
+ENV PATH $JAVA_HOME/bin/i386/green_threads:$JAVA_HOME/jre/bin:$JAVA_HOME/jre/bin/i386:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-RUN echo yes | ./j2sdk-1_3_1_20-linux-i586.rpm.bin && \
-		rm j2sdk-1_3_1_20-linux-i586.rpm.bin && \
-		rpm -i jdk-1.3.1_20.i586.rpm && \
-		rm jdk-1.3.1_20.i586.rpm
-
-ENV JAVA_HOME /usr/java/jdk1.3.1_20
-
-ADD fix-architecture-detection.patch $JAVA_HOME/fix-architecture-detection.patch
-RUN cd $JAVA_HOME && patch -p1 -i fix-architecture-detection.patch
-
-ENV PATH /usr/java/jdk1.3.1_20/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+RUN apt-get install -y strace
