@@ -9,7 +9,23 @@ https://registry.hub.docker.com/u/mcandre/docker-java/
 ```
 $ make
 docker run --rm mcandre/docker-java:3 javac -version
-/jdk1.3.0_05/bin/i386/native_threads/javac: error while loading shared libraries: libstdc++-libc6.1-1.so.2: cannot open shared object file: No such file or directory
+javac: invalid flag: -version
+Usage: javac <options> <source files>
+where possible options include:
+  -g                        Generate all debugging info
+  -g:none                   Generate no debugging info
+  -g:{lines,vars,source}    Generate only some debugging info
+  -O                        Optimize; may hinder debugging or enlarge class file
+  -nowarn                   Generate no warnings
+  -verbose                  Output messages about what the compiler is doing
+  -deprecation              Output source locations where deprecated APIs are used
+  -classpath <path>         Specify where to find user class files
+  -sourcepath <path>        Specify where to find input source files
+  -bootclasspath <path>     Override location of bootstrap class files
+  -extdirs <dirs>           Override location of installed extensions
+  -d <directory>            Specify where to place generated class files
+  -encoding <encoding>      Specify character encoding used by source files
+  -target <release>         Generate class files for specific VM version
 ```
 
 # REQUIREMENTS
