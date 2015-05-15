@@ -1,2 +1,3 @@
 #!/bin/bash
+cd "$JAVA_HOME"
 LD_PRELOAD=/etc/libcwait.so "$JAVA_HOME/bin/i386/native_threads/$(basename $0)" "$@"

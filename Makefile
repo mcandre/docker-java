@@ -6,7 +6,7 @@ build: Dockerfile
 	docker build -t $(IMAGE) .
 
 run: clean-containers build
-	docker run --rm -v $$(pwd):/mnt $(IMAGE) sh -c 'cd /mnt && javac /HelloWorld.java 2>&1 && java HelloWorld 2>&1'
+	docker run --rm -v $$(pwd):/mnt $(IMAGE) sh -c 'javac /mnt/HelloWorld.java 2>&1 && java -cp /mnt HelloWorld 2>&1'
 
 clean-containers:
 	-docker ps -a | grep -v IMAGE | awk '{ print $$1 }' | xargs docker rm -f
