@@ -8,7 +8,7 @@ https://registry.hub.docker.com/u/mcandre/docker-java/
 
 ```
 $ make
-docker run --rm -v $(pwd):/mnt mcandre/docker-java:2 sh -c 'javac /mnt/HelloWorld.java 2>&1 && java -cp /mnt HelloWorld 2>&1'
+docker run --rm -v $(pwd):/mnt mcandre/docker-java:2 sh -c 'javac /mnt/HelloWorld.java && java -cp /mnt HelloWorld'
 Hello World!
 ```
 
