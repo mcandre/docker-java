@@ -1,3 +1,9 @@
 #!/bin/bash
-cd "$JAVA_HOME"
-LD_PRELOAD=/etc/libcwait.so "$JAVA_HOME/bin/i386/native_threads/$(basename $0)" "$@"
+
+MAYBE_MAIN=''
+
+if [ "$(basename "$0")" = 'javac' ]; then
+  MAYBE_MAIN='sun.tools.javac.Main'
+fi
+
+chroot "$JAIL" /bin/i586/java "$MAYBE_MAIN" "$@"

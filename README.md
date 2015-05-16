@@ -9,7 +9,7 @@ https://registry.hub.docker.com/u/mcandre/docker-java/
 ```
 $ make
 docker run --rm -v $(pwd):/mnt mcandre/docker-java:1 sh -c 'javac /mnt/HelloWorld.java && java -classpath $CLASSPATH:/mnt HelloWorld'
-Hello World!
+...
 ```
 
 # REQUIREMENTS

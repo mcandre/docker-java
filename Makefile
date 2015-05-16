@@ -1,4 +1,4 @@
-IMAGE=mcandre/docker-java:1
+IMAGE=mcandre/docker-java:0
 
 all: run
 
@@ -6,7 +6,7 @@ build: Dockerfile
 	docker build -t $(IMAGE) .
 
 run: clean-containers build
-	docker run --rm -v $$(pwd):/mnt $(IMAGE) sh -c 'javac /mnt/HelloWorld.java && java -classpath $$CLASSPATH:/mnt HelloWorld'
+	docker run --rm -v $$(pwd):/mnt $(IMAGE) sh -c '(cd /mnt && javac HelloWorld.java 2>&1 && java mnt.HelloWorld)'
 
 clean-containers:
 	-docker ps -a | grep -v IMAGE | awk '{ print $$1 }' | xargs docker rm -f
