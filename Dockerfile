@@ -1,29 +1,25 @@
-FROM ubuntu:14.04
+FROM mpasternacki/ubuntu-lucid-i386:minbase
 MAINTAINER Andrew Pennebaker <andrew.pennebaker@gmail.com>
 
-RUN dpkg --add-architecture i386 && \
-    apt-get update && \
-    apt-get install -y libxext6:i386 \
-                       libxpm4:i386 \
-                       libxp6:i386 \
-                       libxmu6:i386 \
-                       lib32z1 \
-                       lib32ncurses5 \
-                       lib32bz2-1.0 \
+RUN apt-get update && \
+    apt-get install -y libxext6 \
+                       libxpm4 \
+                       libxp6 \
+                       libxmu6 \
                        wget \
                        tar
 
 RUN apt-get install -y strace binutils gdb
 
-RUN echo 'deb [arch=i386] http://archive.kernel.org/debian-archive/debian woody main' >> /etc/apt/sources.list && \
-    echo 'deb-src [arch=i386] http://archive.kernel.org/debian-archive/debian woody main' >> /etc/apt/sources.list && \
+RUN echo 'deb http://archive.kernel.org/debian-archive/debian woody main' >> /etc/apt/sources.list && \
+    echo 'deb-src http://archive.kernel.org/debian-archive/debian woody main' >> /etc/apt/sources.list && \
     apt-get update && \
-    apt-get install -y --force-yes libstdc++2.9-glibc2.1:i386
+    apt-get install -y --force-yes libstdc++2.9-glibc2.1
 
-RUN echo 'deb [arch=i386] http://archive.kernel.org/debian-archive/debian sarge main' >> /etc/apt/sources.list && \
-    echo 'deb-src [arch=i386] http://archive.kernel.org/debian-archive/debian sarge main' >> /etc/apt/sources.list && \
+RUN echo 'deb http://archive.kernel.org/debian-archive/debian sarge main' >> /etc/apt/sources.list && \
+    echo 'deb-src http://archive.kernel.org/debian-archive/debian sarge main' >> /etc/apt/sources.list && \
     apt-get update && \
-    apt-get install -y --force-yes libc5:i386
+    apt-get install -y --force-yes libc5
 
 RUN wget http://taper.alienbase.nl/mirrors/slackware/slackware-3.2/contrib/java/linux.jdk-1.0.2-pl2.common.tar.gz && \
     tar xzvf linux.jdk-1.0.2-pl2.common.tar.gz && \
