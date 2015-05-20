@@ -1,26 +1,30 @@
-FROM centos:6
+FROM mcandre/docker-debian:slink
 MAINTAINER Andrew Pennebaker <andrew.pennebaker@gmail.com>
 
-RUN yum install -y wget tar strace gdb
+RUN apt-get update && \
+		apt-get install -y wget \
+											 tar \
+											 libc5 \
+											 xlib6g \
+											 strace \
+											 gdb
 
-ADD linuxtech.repo /etc/yum.repos.d/linuxtech.repo
-RUN yum install -y libc5-extras
+RUN wget http://archive.kernel.org/debian-archive/debian/pool/main/x/xpm/xpm4.7_3.4k-6_i386.deb && \
+		dpkg -i xpm4.7_3.4k-6_i386.deb && \
+		rm xpm4.7_3.4k-6_i386.deb
 
-RUN yum install -y libXpm-3.5.10-2.el6.i686 \
-                   libICE-1.0.6-1.el6.i686 \
-                   libSM-1.2.1-2.el6.i686 \
-                   libXext-1.3.2-2.1.el6.i686 \
-                   libXt-1.1.4-6.1.el6.i686
-RUN rpm -U http://ftp.vim.org/pub/languages/java/jdk/JDK-1.0.2/JDK_static-1.0.2.pl2-3.i386.rpm && \
-    yum install -y JDK_static-1.0.2.pl2
+RUN wget http://ftp.vim.org/pub/languages/java/jdk/JDK-1.0.2/JDK_common.1.0.2.pl2.tar.gz && \
+		tar xzvf JDK_common.1.0.2.pl2.tar.gz && \
+		rm JDK_common.1.0.2.pl2.tar.gz && \
+		wget http://ftp.vim.org/pub/languages/java/jdk/JDK-1.0.2/JDK_static.1.0.2.pl2.tar.gz && \
+		tar xzvf JDK_static.1.0.2.pl2.tar.gz && \
+		rm JDK_static.1.0.2.pl2.tar.gz && \
+		mv /java /usr/local/
 
 # Various fixes
-ENV JAIL /usr/local/java
-ADD copy-file-and-dependencies.sh /copy-file-and-dependencies.sh
-RUN /copy-file-and-dependencies.sh
-ENV J_HOME /
-ENV APP_HOME /
-ENV CLASSPATH .:/classes:/lib/classes.zip
-ENV LD_LIBRARY_PATH /lib/i386-linux-gnu:/usr/lib/i386-linux-gnu:/lib/i586:/lib32:/lib
+ENV J_HOME /usr/local/java
+ENV APP_HOME /usr/local/java
+ENV CLASSPATH .:/usr/local/java/classes:/lib/classes.zip
+ENV LD_LIBRARY_PATH /usr/X11R6/lib
 ADD javac /usr/bin/javac
 RUN ln -s /usr/bin/javac /usr/bin/java

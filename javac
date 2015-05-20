@@ -1,9 +1,11 @@
 #!/bin/bash
 
+ulimit -s unlimited
+
 MAYBE_MAIN=''
 
 if [ "$(basename "$0")" = 'javac' ]; then
   MAYBE_MAIN='sun.tools.javac.Main'
 fi
 
-chroot "$JAIL" /bin/i586/java "$MAYBE_MAIN" "$@"
+"$J_HOME/bin/i586/java" "$MAYBE_MAIN" "$@"
