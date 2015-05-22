@@ -11,6 +11,19 @@ index 0ccbdfb..51a53a4 100755
          proc=i386
          ;;
      sparc*)
+diff --git a/bin/realpath b/bin/realpath
+index 6b7c1a5..65505b8 100755
+--- a/bin/realpath
++++ b/bin/realpath
+@@ -7,7 +7,7 @@
+ SVPATH="$PATH"
+ PATH=/bin:/usr/bin
+ case "`uname -m`" in
+-    i[3-6]86)
++    i[3-6]86 | ia32 | ia64 | i?86 | x86_64)
+         proc=i386
+         ;;
+     sparc*)
 diff --git a/jre/bin/.java_wrapper b/jre/bin/.java_wrapper
 index 0ccbdfb..51a53a4 100755
 --- a/jre/bin/.java_wrapper

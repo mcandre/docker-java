@@ -8,6 +8,7 @@ https://registry.hub.docker.com/u/mcandre/docker-java/
 
 ```
 $ make
+docker run --rm mcandre/docker-java:3 javac -version
 javac: invalid flag: -version
 Usage: javac <options> <source files>
 where possible options include:
