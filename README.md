@@ -8,8 +8,17 @@ https://registry.hub.docker.com/u/mcandre/docker-java/
 
 ```
 $ make
-docker run --rm -v $(pwd):/mnt mcandre/docker-java:1 sh -c 'javac /mnt/HelloWorld.java && java -classpath $CLASSPATH:/mnt HelloWorld'
-...
+docker run --privileged --rm -v $(pwd):/mnt mcandre/docker-java:0 sh -c '(cd /mnt && javac HelloWorld.java 2>&1 && java HelloWorld)'
+Hello World!
+docker run --privileged --rm -v $(pwd):/mnt mcandre/docker-java:0 dpkg -l 'jdk*'
+Desired=Unknown/Install/Remove/Purge
+| Status=Not/Installed/Config-files/Unpacked/Failed-config/Half-installed
+|/ Err?=(none)/Hold/Reinst-required/X=both-problems (Status,Err: uppercase=bad)
+||/ Name            Version        Description
++++-===============-==============-============================================
+ii  jdk-common      1.0.2-7        JDK (Java Development Kit)
+ii  jdk-shared      1.0.2-7        JDK (Java Development Kit) - Shared part
+un  jdk-static      <none>         (no description available)
 ```
 
 # REQUIREMENTS

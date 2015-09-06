@@ -6,7 +6,8 @@ build: Dockerfile
 	docker build -t $(IMAGE) .
 
 run: clean-containers build
-	docker run --privileged --rm -v $$(pwd):/mnt $(IMAGE) sh -c '(cd /mnt && javac HelloWorld.java 2>&1 && java mnt.HelloWorld)'
+	docker run --privileged --rm -v $$(pwd):/mnt $(IMAGE) sh -c '(cd /mnt && javac HelloWorld.java 2>&1 && java HelloWorld)'
+	docker run --privileged --rm -v $$(pwd):/mnt mcandre/docker-java:0 dpkg -l 'jdk*'
 
 clean-containers:
 	-docker ps -a | grep -v IMAGE | awk '{ print $$1 }' | xargs docker rm -f
