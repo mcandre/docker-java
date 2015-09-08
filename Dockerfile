@@ -9,10 +9,9 @@ ADD javac /bin/javac
 RUN apt-get update && \
     apt-get install -y g++-multilib wget bzip2 && \
     wget ftp://ftp.nluug.nl/pub/languages/java/jdk/JDK-1.2.2/i386/FCS/j2sdk-1.2.2-FCS-linux-i386-glibc-2.1.3.tar.bz2 && \
-		bunzip2 j2sdk-1.2.2-FCS-linux-i386-glibc-2.1.3.tar.bz2 && \
-		tar xvf j2sdk-1.2.2-FCS-linux-i386-glibc-2.1.3.tar && \
-		rm j2sdk-1.2.2-FCS-linux-i386-glibc-2.1.3.tar && \
+    tar jxvf j2sdk-1.2.2-FCS-linux-i386-glibc-2.1.3.tar.bz2 && \
+    rm j2sdk-1.2.2-FCS-linux-i386-glibc-2.1.3.tar.bz2 && \
     sh rhel3_pre_install.sh && \
-		rm -rf rhel3_pre_install.sh && \
+    rm -rf rhel3_pre_install.sh && \
     ln -s /jdk1.2.2/lib/tools.jar /jdk1.2.2/jre/lib/ext/tools.jar && \
     ln -s /bin/javac /bin/java
