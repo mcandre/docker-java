@@ -6,7 +6,7 @@ build: Dockerfile
 	docker build -t $(IMAGE) .
 
 run: clean-containers build
-	docker run --rm $(IMAGE) javac -version
+	docker run --rm $(IMAGE) sh -c 'echo $$JAVA_HOME'
 
 clean-containers:
 	-docker ps -a | grep -v IMAGE | awk '{ print $$1 }' | xargs docker rm -f

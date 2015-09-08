@@ -8,24 +8,8 @@ https://registry.hub.docker.com/u/mcandre/docker-java/
 
 ```
 $ make
-docker run --rm mcandre/docker-java:3 javac -version
-javac: invalid flag: -version
-Usage: javac <options> <source files>
-where possible options include:
-  -g                        Generate all debugging info
-  -g:none                   Generate no debugging info
-  -g:{lines,vars,source}    Generate only some debugging info
-  -O                        Optimize; may hinder debugging or enlarge class file
-  -nowarn                   Generate no warnings
-  -verbose                  Output messages about what the compiler is doing
-  -deprecation              Output source locations where deprecated APIs are used
-  -classpath <path>         Specify where to find user class files
-  -sourcepath <path>        Specify where to find input source files
-  -bootclasspath <path>     Override location of bootstrap class files
-  -extdirs <dirs>           Override location of installed extensions
-  -d <directory>            Specify where to place generated class files
-  -encoding <encoding>      Specify character encoding used by source files
-  -target <release>         Generate class files for specific VM version
+docker run --rm mcandre/docker-java:3 sh -c 'echo $JAVA_HOME'
+/jdk1.3.1_20
 ```
 
 # REQUIREMENTS
